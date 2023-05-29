@@ -13,6 +13,12 @@ def post_detail(request,post_id):
 
 
 def new_post(request):
-    form = postForm()
+    if request.method == 'POST':
+        form = postForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    else :
+        form = postForm()        
+    
     return render(request,'posts/new.html', {'form':form})
 # Create your views here.
