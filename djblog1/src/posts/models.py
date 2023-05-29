@@ -19,7 +19,10 @@ class post(models.Model):
     publish_date = models.DateTimeField()
     content = models.TextField(max_length=15000)
     author = models.ForeignKey(author,related_name='post_author',on_delete=models.CASCADE)
-
+    
+    def __str__(self):
+        return self.title
+        
 
 
    
